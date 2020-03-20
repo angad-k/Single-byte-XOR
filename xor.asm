@@ -37,9 +37,7 @@ exor:
 	;code for XOR
         mov edx, 0 ;We are using edx as the counter. Here we initialize it to 0.
         .loop:
-        cmp byte [string + edx + 1], 0x00 ;Checking null value. I am checking for the next character to be null.
-					  ;This is because otherwise the newline character which is invariably at 
-					  ;the end of the string unecessarily gets XORd.
+        cmp byte [string + edx], 0xA ;Checking for newline character.
         JE .next ;Exiting loop if next character is null.
         mov AX, [string + edx] ;Moving the character stored in the memory location pointed by string plus the value in edx to AX register.
         xor AX, BX ;XORing character stored in BX with AX. ie - String's  character with the key.
@@ -48,4 +46,3 @@ exor:
         JMP .loop ;Next iteration.
         .next:
 	ret ;Ghar-wapsi
-	
