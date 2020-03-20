@@ -38,7 +38,7 @@ exor:
         mov edx, 0 ;We are using edx as the counter. Here we initialize it to 0.
         .loop:
         cmp byte [string + edx], 0xA ;Checking for newline character.
-        JE .next ;Exiting loop if next character is null.
+        JE .next ;Exiting loop if current character is newline.
         mov AX, [string + edx] ;Moving the character stored in the memory location pointed by string plus the value in edx to AX register.
         xor AX, BX ;XORing character stored in BX with AX. ie - String's  character with the key.
         mov [string + edx], AX ;Moving contents of AX to the memory location pointed by string plus the value in edx
